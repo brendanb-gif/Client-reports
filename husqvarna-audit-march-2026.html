@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Husqvarna AU — Automower Account Audit | March 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #f4f4f4;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 40px 48px 32px;
+    }
+    .header-meta {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .header-sub {
+      font-size: 13px;
+      color: #aaa;
+    }
+    .header-bar {
+      margin-top: 28px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .stat-pill {
+      background: #2a2a2a;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 12px 20px;
+    }
+    .stat-pill .label {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    .stat-pill .value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 48px;
+    }
+
+    /* ── Section headers ── */
+    .section {
+      margin-bottom: 48px;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* ── Tables ── */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      background: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    thead th {
+      background: #f8f8f8;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #666;
+      padding: 10px 16px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+      white-space: nowrap;
+    }
+    tbody tr {
+      border-bottom: 1px solid #f0f0f0;
+    }
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+    tbody tr:hover {
+      background: #fafafa;
+    }
+    tbody td {
+      padding: 10px 16px;
+      font-size: 13px;
+      vertical-align: top;
+    }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .mono { font-family: 'SF Mono', 'Fira Code', Consolas, monospace; font-size: 12px; }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .badge-red    { background: #fde8e8; color: #c0392b; }
+    .badge-amber  { background: #fef3e2; color: #d68910; }
+    .badge-green  { background: #e8f8f0; color: #1e8449; }
+    .badge-blue   { background: #e8f0fe; color: #1a6bb5; }
+    .badge-grey   { background: #f0f0f0; color: #666; }
+
+    /* ── Issue cards ── */
+    .issue-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .issue-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-left: 4px solid #ccc;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+    }
+    .issue-card.priority-high   { border-left-color: #c0392b; }
+    .issue-card.priority-medium { border-left-color: #d68910; }
+    .issue-card.priority-low    { border-left-color: #1a6bb5; }
+
+    .issue-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .issue-num {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .issue-title {
+      font-size: 14px;
+      font-weight: 700;
+      flex: 1;
+      line-height: 1.4;
+    }
+    .issue-body {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.7;
+      margin-left: 36px;
+    }
+    .issue-body .sub-table {
+      margin-top: 10px;
+      background: #f8f8f8;
+      border: 1px solid #e8e8e8;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .issue-body .sub-table table thead th {
+      background: #f0f0f0;
+    }
+
+    /* ── What's working cards ── */
+    .working-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .working-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-left: 4px solid #1e8449;
+      border-radius: 0 8px 8px 0;
+      padding: 18px 20px;
+    }
+    .working-card h4 {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #1a1a1a;
+    }
+    .working-card p {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* ── Opportunities table row colour ── */
+    .opp-high td:first-child   { font-weight: 600; }
+    tr.opp-high  .badge { background: #fde8e8; color: #c0392b; }
+    tr.opp-med   .badge { background: #fef3e2; color: #d68910; }
+    tr.opp-low   .badge { background: #e8f0fe; color: #1a6bb5; }
+
+    /* ── Footer ── */
+    .footer {
+      background: #1a1a1a;
+      color: #666;
+      font-size: 11px;
+      padding: 24px 48px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════ HEADER -->
+<div class="header">
+  <div class="header-meta">Account Audit &bull; Last 30 Days</div>
+  <h1>Husqvarna AU &mdash; Automower</h1>
+  <div class="header-sub">Account ID: 462-074-9247 &nbsp;&bull;&nbsp; Prepared 5 March 2026</div>
+  <div class="header-bar">
+    <div class="stat-pill">
+      <div class="label">Total Spend</div>
+      <div class="value">$24,797</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">Search + PMax Convs</div>
+      <div class="value">110</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">Blended Cost / Conv</div>
+      <div class="value">~$135</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">Active Campaigns</div>
+      <div class="value">10</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">Paused Campaigns</div>
+      <div class="value">11</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ══════════════════════════════════════════════ CAMPAIGN PERFORMANCE -->
+  <div class="section">
+    <div class="section-title">Campaign Performance</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Campaign</th>
+            <th>Type</th>
+            <th>Bidding</th>
+            <th class="num">Spend</th>
+            <th class="num">Convs</th>
+            <th class="num">Conv Value</th>
+            <th class="num">Cost / Conv</th>
+            <th class="num">ROAS</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Search &ndash; BRAND &ndash; Husqvarna Robotic Mower</td>
+            <td><span class="badge badge-blue">Search</span></td>
+            <td class="mono">Manual CPC</td>
+            <td class="num">$4,880</td>
+            <td class="num">37</td>
+            <td class="num">&mdash;</td>
+            <td class="num">$131.90</td>
+            <td class="num">&mdash;</td>
+            <td><span class="badge badge-amber">Review</span></td>
+          </tr>
+          <tr>
+            <td>Search &ndash; LEAD &ndash; Generic</td>
+            <td><span class="badge badge-blue">Search</span></td>
+            <td class="mono">Max Convs</td>
+            <td class="num">$3,808</td>
+            <td class="num">31</td>
+            <td class="num">&mdash;</td>
+            <td class="num">$122.84</td>
+            <td class="num">&mdash;</td>
+            <td><span class="badge badge-green">Good</span></td>
+          </tr>
+          <tr>
+            <td>PMAX &ndash; PURCHASE &ndash; Non Shopping</td>
+            <td><span class="badge badge-grey">PMax</span></td>
+            <td class="mono">Max Convs</td>
+            <td class="num">$3,411</td>
+            <td class="num">28.5</td>
+            <td class="num">$5,396</td>
+            <td class="num">$119.69</td>
+            <td class="num">1.58x</td>
+            <td><span class="badge badge-green">Good</span></td>
+          </tr>
+          <tr>
+            <td>YouTube &ndash; Trueview &ndash; Robotic Mowers</td>
+            <td><span class="badge badge-grey">Video</span></td>
+            <td class="mono">tCPM</td>
+            <td class="num">$2,534</td>
+            <td class="num">1</td>
+            <td class="num">$329</td>
+            <td class="num">$2,534</td>
+            <td class="num">0.13x</td>
+            <td><span class="badge badge-red">Problem</span></td>
+          </tr>
+          <tr>
+            <td>YouTube &ndash; Bumper &ndash; Custom Audience &amp; In-Market</td>
+            <td><span class="badge badge-grey">Video</span></td>
+            <td class="mono">tCPM</td>
+            <td class="num">$2,127</td>
+            <td class="num">0</td>
+            <td class="num">&mdash;</td>
+            <td class="num">&mdash;</td>
+            <td class="num">&mdash;</td>
+            <td><span class="badge badge-red">Problem</span></td>
+          </tr>
+          <tr>
+            <td>PMAX &ndash; PURCHASE &ndash; Performance</td>
+            <td><span class="badge badge-grey">PMax</span></td>
+            <td class="mono">Max Convs</td>
+            <td class="num">$2,125</td>
+            <td class="num">6</td>
+            <td class="num">$1,387</td>
+            <td class="num">$354.30</td>
+            <td class="num">0.65x</td>
+            <td><span class="badge badge-red">Problem</span></td>
+          </tr>
+          <tr>
+            <td>Search &ndash; LEAD &ndash; Buy Intent</td>
+            <td><span class="badge badge-blue">Search</span></td>
+            <td class="mono">Max Convs</td>
+            <td class="num">$1,871</td>
+            <td class="num">8</td>
+            <td class="num">&mdash;</td>
+            <td class="num">$233.81</td>
+            <td class="num">&mdash;</td>
+            <td><span class="badge badge-amber">Review</span></td>
+          </tr>
+          <tr>
+            <td>YouTube &ndash; Trueview &ndash; Garden Care</td>
+            <td><span class="badge badge-grey">Video</span></td>
+            <td class="mono">tCPM</td>
+            <td class="num">$1,621</td>
+            <td class="num">0</td>
+            <td class="num">&mdash;</td>
+            <td class="num">&mdash;</td>
+            <td class="num">&mdash;</td>
+            <td><span class="badge badge-red">Problem</span></td>
+          </tr>
+          <tr>
+            <td>YouTube &ndash; Bumper &amp; Trueview Remarketing</td>
+            <td><span class="badge badge-grey">Video</span></td>
+            <td class="mono">tCPM</td>
+            <td class="num">$420</td>
+            <td class="num">0</td>
+            <td class="num">&mdash;</td>
+            <td class="num">&mdash;</td>
+            <td class="num">&mdash;</td>
+            <td><span class="badge badge-amber">Review</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ TOP AD GROUPS -->
+  <div class="section">
+    <div class="section-title">Top Ad Groups by Spend</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Ad Group</th>
+            <th>Campaign</th>
+            <th class="num">Impr.</th>
+            <th class="num">Clicks</th>
+            <th class="num">Spend</th>
+            <th class="num">Convs</th>
+            <th class="num">CTR</th>
+            <th class="num">Avg CPC</th>
+            <th class="num">CVR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Robot Lawn Mower</td>
+            <td>Generic</td>
+            <td class="num">9,575</td>
+            <td class="num">1,122</td>
+            <td class="num">$2,603</td>
+            <td class="num">17.5</td>
+            <td class="num">11.7%</td>
+            <td class="num">$2.32</td>
+            <td class="num">1.6%</td>
+          </tr>
+          <tr>
+            <td>True View &ndash; Competitor Robotic Mowers</td>
+            <td>YouTube Trueview Robotic</td>
+            <td class="num">225,260</td>
+            <td class="num">281</td>
+            <td class="num">$2,532</td>
+            <td class="num">1</td>
+            <td class="num">0.12%</td>
+            <td class="num">$9.01</td>
+            <td class="num">0.4%</td>
+          </tr>
+          <tr>
+            <td>Husqvarna Robot Mower</td>
+            <td>Brand</td>
+            <td class="num">3,038</td>
+            <td class="num">986</td>
+            <td class="num">$1,682</td>
+            <td class="num">22</td>
+            <td class="num">32.5%</td>
+            <td class="num">$1.71</td>
+            <td class="num"><strong>2.2%</strong></td>
+          </tr>
+          <tr>
+            <td>Automower</td>
+            <td>Brand</td>
+            <td class="num">2,762</td>
+            <td class="num">489</td>
+            <td class="num">$1,606</td>
+            <td class="num">9</td>
+            <td class="num">17.7%</td>
+            <td class="num">$3.29</td>
+            <td class="num">1.8%</td>
+          </tr>
+          <tr>
+            <td>Bumper &ndash; Affinity &ndash; Garden Care</td>
+            <td>YouTube Bumper</td>
+            <td class="num">506,153</td>
+            <td class="num">103</td>
+            <td class="num">$1,568</td>
+            <td class="num">0</td>
+            <td class="num">0.02%</td>
+            <td class="num">$15.22</td>
+            <td class="num">0%</td>
+          </tr>
+          <tr>
+            <td>True View &ndash; Affinity &ndash; Garden Care</td>
+            <td>YouTube Trueview Garden Care</td>
+            <td class="num">124,673</td>
+            <td class="num">164</td>
+            <td class="num">$1,279</td>
+            <td class="num">0</td>
+            <td class="num">0.13%</td>
+            <td class="num">$7.80</td>
+            <td class="num">0%</td>
+          </tr>
+          <tr>
+            <td>Automower Buy Intent</td>
+            <td>Brand</td>
+            <td class="num">1,525</td>
+            <td class="num">323</td>
+            <td class="num">$1,130</td>
+            <td class="num">2</td>
+            <td class="num">21.2%</td>
+            <td class="num">$3.50</td>
+            <td class="num">0.6%</td>
+          </tr>
+          <tr>
+            <td>Buy</td>
+            <td>Buy Intent</td>
+            <td class="num">1,847</td>
+            <td class="num">205</td>
+            <td class="num">$820</td>
+            <td class="num">4.5</td>
+            <td class="num">11.1%</td>
+            <td class="num">$4.00</td>
+            <td class="num">2.2%</td>
+          </tr>
+          <tr>
+            <td>Best Automower</td>
+            <td>Buy Intent</td>
+            <td class="num">1,803</td>
+            <td class="num">224</td>
+            <td class="num">$817</td>
+            <td class="num">3.5</td>
+            <td class="num">12.4%</td>
+            <td class="num">$3.65</td>
+            <td class="num">1.6%</td>
+          </tr>
+          <tr style="background:#f0faf4;">
+            <td><strong>Smart Mower</strong></td>
+            <td>Generic</td>
+            <td class="num">1,256</td>
+            <td class="num">152</td>
+            <td class="num">$562</td>
+            <td class="num"><strong>8.5</strong></td>
+            <td class="num">12.1%</td>
+            <td class="num">$3.70</td>
+            <td class="num"><strong>5.6%</strong></td>
+          </tr>
+          <tr>
+            <td>Price</td>
+            <td>Buy Intent</td>
+            <td class="num">853</td>
+            <td class="num">87</td>
+            <td class="num">$229</td>
+            <td class="num">0</td>
+            <td class="num">10.2%</td>
+            <td class="num">$2.63</td>
+            <td class="num">0%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ ISSUES -->
+  <div class="section">
+    <div class="section-title">Issues Identified</div>
+    <div class="issue-list">
+
+      <!-- Issue 1 -->
+      <div class="issue-card priority-high">
+        <div class="issue-header">
+          <div class="issue-num">1</div>
+          <div class="issue-title">YouTube spending 27% of budget (~$6,700) for near-zero return <span class="badge badge-red">High</span></div>
+        </div>
+        <div class="issue-body">
+          Four YouTube campaigns produced 1 conversion with a $329 conversion value. The Bumper &ndash; Affinity &ndash; Garden Care AG alone spent $1,568 for 0 conversions. Even allowing for brand awareness value, this allocation is disproportionate relative to Search and PMax. The Trueview &ndash; Garden Care campaign ($1,621) also returned zero. YouTube is not functioning as a direct-response channel here but is funded as if it is.
+          <div class="sub-table">
+            <table>
+              <thead><tr><th>Campaign</th><th class="num">Spend</th><th class="num">Convs</th><th class="num">Conv Value</th></tr></thead>
+              <tbody>
+                <tr><td>Trueview &ndash; Robotic Mowers</td><td class="num">$2,534</td><td class="num">1</td><td class="num">$329</td></tr>
+                <tr><td>Bumper &ndash; Custom Audience</td><td class="num">$2,127</td><td class="num">0</td><td class="num">&mdash;</td></tr>
+                <tr><td>Trueview &ndash; Garden Care</td><td class="num">$1,621</td><td class="num">0</td><td class="num">&mdash;</td></tr>
+                <tr><td>Bumper &amp; Trueview Remarketing</td><td class="num">$420</td><td class="num">0</td><td class="num">&mdash;</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 2 -->
+      <div class="issue-card priority-high">
+        <div class="issue-header">
+          <div class="issue-num">2</div>
+          <div class="issue-title">PMAX &ndash; PURCHASE &ndash; Performance is below break-even (0.65x ROAS) <span class="badge badge-red">High</span></div>
+        </div>
+        <div class="issue-body">
+          $2,125 spend, 6 conversions, $1,387 conversion value = 0.65x ROAS. This campaign is actively losing money. Compare to PMAX &ndash; Non Shopping which is returning 1.58x ROAS at $119.69/conv. The Performance PMax needs audience signals reviewed or should be paused while budget is redirected to the better-performing Non Shopping campaign.
+        </div>
+      </div>
+
+      <!-- Issue 3 -->
+      <div class="issue-card priority-high">
+        <div class="issue-header">
+          <div class="issue-num">3</div>
+          <div class="issue-title">"how" is missing from the Interrogative Words negative list <span class="badge badge-red">High</span></div>
+        </div>
+        <div class="issue-body">
+          The <em>WP &ndash; Interrogative Words</em> list covers: <em>which, where, what, when, who, whether, why, whose, whom</em> &mdash; but <strong>"how" is not included</strong>. This is why price/research queries are slipping through with zero conversions:
+          <div class="sub-table">
+            <table>
+              <thead><tr><th>Search Term</th><th class="num">Clicks</th><th class="num">Spend</th><th class="num">Convs</th></tr></thead>
+              <tbody>
+                <tr><td>how much are robot lawn mowers</td><td class="num">10</td><td class="num">$44</td><td class="num">0</td></tr>
+                <tr><td>how much is a robot lawn mower</td><td class="num">6</td><td class="num">$24</td><td class="num">0</td></tr>
+                <tr><td>how much is a robot mower</td><td class="num">4</td><td class="num">$18</td><td class="num">0</td></tr>
+                <tr><td>how much is robotic lawn mower</td><td class="num">3</td><td class="num">$14</td><td class="num">0</td></tr>
+                <tr><td>cost of robot lawn mower</td><td class="num">4</td><td class="num">$17</td><td class="num">0</td></tr>
+                <tr><td>how much is a husqvarna auto mower</td><td class="num">5</td><td class="num">$15</td><td class="num">0</td></tr>
+                <tr><td>price of remote control lawn mower</td><td class="num">3</td><td class="num">$13</td><td class="num">0</td></tr>
+              </tbody>
+            </table>
+          </div>
+          Fix: add [PHRASE] "how" to the WP &ndash; Interrogative Words list. This will stop these terms account-wide immediately.
+        </div>
+      </div>
+
+      <!-- Issue 4 -->
+      <div class="issue-card priority-medium">
+        <div class="issue-header">
+          <div class="issue-num">4</div>
+          <div class="issue-title">EXCLUDED search terms still generating spend via uncontrolled ad groups <span class="badge badge-amber">Medium</span></div>
+        </div>
+        <div class="issue-body">
+          Multiple terms are negated (EXCLUDED) in one ad group but have no control (NONE status) in others, meaning they continue matching and spending. Exclusions applied at ad group level are not enough &mdash; these need to be in shared negative lists applied broadly.
+          <div class="sub-table">
+            <table>
+              <thead><tr><th>Search Term</th><th>Excluded In</th><th>Still Active In</th><th class="num">Spend</th><th class="num">Convs</th></tr></thead>
+              <tbody>
+                <tr><td>robotic lawn mower australia</td><td>Buy Intent</td><td>Generic</td><td class="num">$85</td><td class="num">0</td></tr>
+                <tr><td>robot lawn mowers</td><td>Brand Automower</td><td>Generic, Buy Intent</td><td class="num">$53</td><td class="num">0</td></tr>
+                <tr><td>remote lawn mower</td><td>Brand Automower</td><td>Buy Intent</td><td class="num">$33</td><td class="num">0</td></tr>
+                <tr><td>robotic mower</td><td>Brand Automower</td><td>Generic</td><td class="num">$13</td><td class="num">0</td></tr>
+                <tr><td>auto mower</td><td>Buy Intent</td><td>Generic</td><td class="num">$19</td><td class="num">0</td></tr>
+                <tr><td>robotic lawn mower for large lawns</td><td>Buy Intent</td><td>Generic</td><td class="num">$24</td><td class="num">0</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 5 -->
+      <div class="issue-card priority-medium">
+        <div class="issue-header">
+          <div class="issue-num">5</div>
+          <div class="issue-title">Brand "Automower Buy Intent" AG is matching generic, non-brand queries <span class="badge badge-amber">Medium</span></div>
+        </div>
+        <div class="issue-body">
+          The Brand campaign's Automower Buy Intent ad group is matching clearly generic terms &mdash; likely due to broad or phrase brand keywords. These terms have 0 conversions and inflate cost in the brand campaign:
+          <div class="sub-table">
+            <table>
+              <thead><tr><th>Search Term</th><th class="num">Clicks</th><th class="num">Spend</th><th class="num">Convs</th></tr></thead>
+              <tbody>
+                <tr><td>self mowing lawn mower</td><td class="num">15</td><td class="num">$46</td><td class="num">0</td></tr>
+                <tr><td>robotic lawnmower</td><td class="num">11</td><td class="num">$33</td><td class="num">0</td></tr>
+                <tr><td>autonomous lawn mower</td><td class="num">10</td><td class="num">$30</td><td class="num">0</td></tr>
+                <tr><td>lawn mowing robot</td><td class="num">9</td><td class="num">$27</td><td class="num">0</td></tr>
+                <tr><td>automatic mower robot</td><td class="num">8</td><td class="num">$24</td><td class="num">0</td></tr>
+                <tr><td>robotic lawnmower prices</td><td class="num">10</td><td class="num">$44</td><td class="num">0</td></tr>
+              </tbody>
+            </table>
+          </div>
+          These should be negated from the Brand campaign and managed via the Generic or Buy Intent search campaigns.
+        </div>
+      </div>
+
+      <!-- Issue 6 -->
+      <div class="issue-card priority-medium">
+        <div class="issue-header">
+          <div class="issue-num">6</div>
+          <div class="issue-title">Brand campaign running Manual CPC &mdash; no Smart Bidding <span class="badge badge-amber">Medium</span></div>
+        </div>
+        <div class="issue-body">
+          The top-spending campaign (Search &ndash; BRAND, $4,880 spend, 37 conversions) is on Manual CPC. All other active search campaigns use Smart Bidding (Max Conversions). With 37 conversions in 30 days, there is more than sufficient data to move to Target CPA or Maximise Conversions. Manual CPC on brand is leaving efficiency gains on the table and requires ongoing manual bid management.
+        </div>
+      </div>
+
+      <!-- Issue 7 -->
+      <div class="issue-card priority-medium">
+        <div class="issue-header">
+          <div class="issue-num">7</div>
+          <div class="issue-title">Price intent clicks not converting &mdash; likely a landing page issue <span class="badge badge-amber">Medium</span></div>
+        </div>
+        <div class="issue-body">
+          The "Price" AG in Buy Intent spent $229 across 87 clicks for 0 conversions. Additionally, terms like "best robotic mowers australia" ($27, 0 convs), "best robot lawn mower australia 2025" ($13, 0 convs), and "best robot lawn mower for hills" ($24, 0 convs at $8.13 avg CPC) are consistently not converting. These are high commercial intent queries. The most likely explanation is a landing page that doesn't present pricing clearly or creates friction before purchase intent is satisfied. The ads are working (CTRs are reasonable) but the post-click experience is failing.
+        </div>
+      </div>
+
+      <!-- Issue 8 -->
+      <div class="issue-card priority-low">
+        <div class="issue-header">
+          <div class="issue-num">8</div>
+          <div class="issue-title">14 HGS ad groups across 6 campaigns are paused and dormant <span class="badge badge-blue">Low</span></div>
+        </div>
+        <div class="issue-body">
+          Melbourne, Sydney, and Tasmania HGS brand and general campaigns (plus associated PMax variants) are all PAUSED at campaign level and generating zero activity. If the HGS dealer program is no longer active, these should be archived to keep the account clean. If they may be reactivated, leave them but document the intent.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ OPPORTUNITIES -->
+  <div class="section">
+    <div class="section-title">Opportunities</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Opportunity</th>
+            <th>Priority</th>
+            <th>Action</th>
+            <th>Est. Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="opp-high">
+            <td>Add [PHRASE] "how" to Interrogative Words negative list</td>
+            <td><span class="badge badge-red">High</span></td>
+            <td>Add to shared list &mdash; 2 min fix</td>
+            <td>Stop ~$150+/mo in zero-conv spend immediately</td>
+          </tr>
+          <tr class="opp-high">
+            <td>Reduce YouTube budget or pause zero-conversion AGs</td>
+            <td><span class="badge badge-red">High</span></td>
+            <td>Pause Bumper Affinity + Trueview Garden Care; redirect $3&ndash;4k/mo to Search/PMax</td>
+            <td>Recover $3,000&ndash;$4,000/mo in unproductive spend</td>
+          </tr>
+          <tr class="opp-high">
+            <td>Pause or restructure PMAX &ndash; PURCHASE &ndash; Performance</td>
+            <td><span class="badge badge-red">High</span></td>
+            <td>Pause campaign; review audience signals; consider consolidating into Non Shopping PMax</td>
+            <td>Stop losing money at 0.65x ROAS ($2,125/mo)</td>
+          </tr>
+          <tr class="opp-med">
+            <td>Move Brand Search to Smart Bidding</td>
+            <td><span class="badge badge-amber">Medium</span></td>
+            <td>Switch to Max Conversions or set tCPA; monitor for 2 weeks</td>
+            <td>Better CPL on highest-volume, highest-spend campaign</td>
+          </tr>
+          <tr class="opp-med">
+            <td>Negate generic terms from Brand Automower Buy Intent AG</td>
+            <td><span class="badge badge-amber">Medium</span></td>
+            <td>Add non-brand terms as negatives in Brand campaign</td>
+            <td>Reduce wasted brand budget; improve brand CVR</td>
+          </tr>
+          <tr class="opp-med">
+            <td>Escalate poorly-performing NONE-status terms to shared negative lists</td>
+            <td><span class="badge badge-amber">Medium</span></td>
+            <td>Add zero-conv terms to relevant shared lists</td>
+            <td>Prevent recurring waste without ongoing monitoring</td>
+          </tr>
+          <tr class="opp-med">
+            <td>Audit landing page for price/best-of intent</td>
+            <td><span class="badge badge-amber">Medium</span></td>
+            <td>Review CRO on pages receiving price-intent traffic; surface pricing earlier</td>
+            <td>Convert existing high-intent clicks that are currently dead-ending</td>
+          </tr>
+          <tr class="opp-med">
+            <td>Expand Smart Mower AG budget</td>
+            <td><span class="badge badge-amber">Medium</span></td>
+            <td>Increase bid or budget allocation; test additional smart mower variants</td>
+            <td>Best CVR in account (5.6%) &mdash; underfunded relative to performance</td>
+          </tr>
+          <tr class="opp-low">
+            <td>Create "2026" best-of landing page and ad copy</td>
+            <td><span class="badge badge-blue">Low</span></td>
+            <td>Dedicated LP for "best robot mower australia 2026" queries</td>
+            <td>Capture year-modifier intent currently spending at 0 convs</td>
+          </tr>
+          <tr class="opp-low">
+            <td>Archive paused HGS campaigns</td>
+            <td><span class="badge badge-blue">Low</span></td>
+            <td>Remove or archive Melbourne / Sydney / Tasmania campaigns if program is inactive</td>
+            <td>Account hygiene</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ WHAT'S WORKING -->
+  <div class="section">
+    <div class="section-title">What's Working</div>
+    <div class="working-grid">
+      <div class="working-card">
+        <h4>Search &ndash; LEAD &ndash; Generic</h4>
+        <p>31 conversions at $122.84 cost/conv. The Robot Lawn Mower and Smart Mower AGs are the account's workhorses. Smart Mower in particular has a 5.6% CVR &mdash; best in account.</p>
+      </div>
+      <div class="working-card">
+        <h4>Brand &ndash; Husqvarna Robot Mower AG</h4>
+        <p>986 clicks at $1.71 avg CPC, 22 conversions, 2.2% CVR. The "husqvarna robot mower" term alone: 351 clicks at $0.48 avg CPC, 9 conversions.</p>
+      </div>
+      <div class="working-card">
+        <h4>PMAX &ndash; Non Shopping</h4>
+        <p>28.5 conversions at $119.69/conv, 1.58x ROAS, $3,411 spend. The strongest scalable performer in the account. Worth testing a budget increase.</p>
+      </div>
+      <div class="working-card">
+        <h4>Negative Keyword Library</h4>
+        <p>10 shared lists covering competitors (62 terms), world locations (803 terms), model names (49), other products (36), and question words. Solid structural foundation &mdash; just needs "how" added.</p>
+      </div>
+      <div class="working-card">
+        <h4>Automower Acreage AG</h4>
+        <p>133 clicks, 4 conversions, $379 spend. Niche targeting for larger property owners is converting and represents an underexplored audience segment worth expanding.</p>
+      </div>
+      <div class="working-card">
+        <h4>Brand Search Volume &amp; CTR</h4>
+        <p>Brand campaign CTR of 24.6% shows strong brand recognition and intent. The "husqvarna robot mower australia" term converts at 52.1% CTR &mdash; high-intent, well-controlled.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════ FOOTER -->
+<div class="footer">
+  Husqvarna AU &mdash; Automower &nbsp;&bull;&nbsp; Account Audit &nbsp;&bull;&nbsp; March 2026 &nbsp;&bull;&nbsp; Webprofits
+</div>
+
+</body>
+</html>

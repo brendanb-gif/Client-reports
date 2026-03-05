@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Husqvarna AU — February 2026 Performance Report</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #f4f4f4;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 40px 48px 32px;
+    }
+    .header-meta {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .header-sub {
+      font-size: 13px;
+      color: #aaa;
+    }
+    .header-bar {
+      margin-top: 28px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .stat-pill {
+      background: #2a2a2a;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 12px 20px;
+    }
+    .stat-pill .label {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    .stat-pill .value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 48px;
+    }
+
+    /* ── Section headers ── */
+    .section {
+      margin-bottom: 48px;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* ── Tables ── */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      background: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    thead th {
+      background: #f8f8f8;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #666;
+      padding: 10px 16px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+      white-space: nowrap;
+    }
+    tbody tr {
+      border-bottom: 1px solid #f0f0f0;
+    }
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+    tbody tr:hover {
+      background: #fafafa;
+    }
+    tbody td {
+      padding: 10px 16px;
+      font-size: 13px;
+      vertical-align: top;
+    }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .mono { font-family: 'SF Mono', 'Fira Code', Consolas, monospace; font-size: 12px; }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .badge-red    { background: #fde8e8; color: #c0392b; }
+    .badge-amber  { background: #fef3e2; color: #d68910; }
+    .badge-green  { background: #e8f8f0; color: #1e8449; }
+    .badge-blue   { background: #e8f0fe; color: #1a6bb5; }
+    .badge-grey   { background: #f0f0f0; color: #666; }
+
+    /* ── Channel summary cards ── */
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 0;
+    }
+    .channel-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px 24px;
+    }
+    .channel-card .channel-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .channel-card .channel-spend {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+    .channel-card .channel-sub {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 12px;
+    }
+    .channel-card .channel-stats {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .channel-card .channel-stats .cs {
+      font-size: 11px;
+    }
+    .channel-card .channel-stats .cs .cs-label {
+      color: #888;
+      display: block;
+    }
+    .channel-card .channel-stats .cs .cs-val {
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .channel-card.channel-search { border-top: 3px solid #1a6bb5; }
+    .channel-card.channel-pmax   { border-top: 3px solid #1e8449; }
+    .channel-card.channel-video  { border-top: 3px solid #c0392b; }
+
+    /* ── Takeaway cards ── */
+    .takeaway-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .takeaway-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-left: 4px solid #ccc;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      font-size: 13px;
+      color: #333;
+      line-height: 1.7;
+    }
+    .takeaway-card.positive { border-left-color: #1e8449; }
+    .takeaway-card.negative { border-left-color: #c0392b; }
+    .takeaway-card.neutral  { border-left-color: #d68910; }
+    .takeaway-card strong   { color: #1a1a1a; }
+
+    /* ── Footer ── */
+    .footer {
+      background: #1a1a1a;
+      color: #666;
+      font-size: 11px;
+      padding: 24px 48px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════ HEADER -->
+<div class="header">
+  <div class="header-meta">Monthly Performance Report &bull; February 2026</div>
+  <h1>Husqvarna AU &mdash; Automower</h1>
+  <div class="header-sub">Account ID: 462-074-9247 &nbsp;&bull;&nbsp; Period: 1&ndash;28 February 2026</div>
+  <div class="header-bar">
+    <div class="stat-pill">
+      <div class="label">Total Spend</div>
+      <div class="value">$24,797</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">Total Conversions</div>
+      <div class="value">111.5</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">Blended Cost / Conv</div>
+      <div class="value">~$135</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">Search + PMax Convs</div>
+      <div class="value">110.5</div>
+    </div>
+    <div class="stat-pill">
+      <div class="label">Search + PMax CPA</div>
+      <div class="value">$133</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ══════════════════════════════════════════════ CHANNEL SUMMARY -->
+  <div class="section">
+    <div class="section-title">Channel Summary</div>
+    <div class="channel-grid">
+
+      <div class="channel-card channel-search">
+        <div class="channel-label">Search</div>
+        <div class="channel-spend">$10,559</div>
+        <div class="channel-sub">42.6% of spend &mdash; 3 campaigns</div>
+        <div class="channel-stats">
+          <div class="cs"><span class="cs-label">Conversions</span><span class="cs-val">76</span></div>
+          <div class="cs"><span class="cs-label">Cost / Conv</span><span class="cs-val">$138.93</span></div>
+          <div class="cs"><span class="cs-label">Conv Value</span><span class="cs-val">N/A</span></div>
+        </div>
+      </div>
+
+      <div class="channel-card channel-pmax">
+        <div class="channel-label">Performance Max</div>
+        <div class="channel-spend">$5,536</div>
+        <div class="channel-sub">22.3% of spend &mdash; 2 campaigns</div>
+        <div class="channel-stats">
+          <div class="cs"><span class="cs-label">Conversions</span><span class="cs-val">34.5</span></div>
+          <div class="cs"><span class="cs-label">Cost / Conv</span><span class="cs-val">$160.46</span></div>
+          <div class="cs"><span class="cs-label">Conv Value</span><span class="cs-val">$6,783</span></div>
+        </div>
+      </div>
+
+      <div class="channel-card channel-video">
+        <div class="channel-label">YouTube / Video</div>
+        <div class="channel-spend">$6,702</div>
+        <div class="channel-sub">27.0% of spend &mdash; 4 campaigns</div>
+        <div class="channel-stats">
+          <div class="cs"><span class="cs-label">Conversions</span><span class="cs-val">1</span></div>
+          <div class="cs"><span class="cs-label">Cost / Conv</span><span class="cs-val">$6,702</span></div>
+          <div class="cs"><span class="cs-label">Conv Value</span><span class="cs-val">$329</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ CAMPAIGN PERFORMANCE -->
+  <div class="section">
+    <div class="section-title">Campaign Performance</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Campaign</th>
+            <th>Type</th>
+            <th>Bidding</th>
+            <th class="num">Spend</th>
+            <th class="num">Convs</th>
+            <th class="num">Conv Value</th>
+            <th class="num">Cost / Conv</th>
+            <th class="num">ROAS</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Search &ndash; BRAND &ndash; Husqvarna Robotic Mower</td>
+            <td><span class="badge badge-blue">Search</span></td>
+            <td class="mono">Manual CPC</td>
+            <td class="num">$4,880</td>
+            <td class="num">37</td>
+            <td class="num">&mdash;</td>
+            <td class="num">$131.90</td>
+            <td class="num">&mdash;</td>
+            <td><span class="badge badge-green">Good</span></td>
+          </tr>
+          <tr>
+            <td>Search &ndash; LEAD &ndash; Generic</td>
+            <td><span class="badge badge-blue">Search</span></td>
+            <td class="mono">Max Convs</td>
+            <td class="num">$3,808</td>
+            <td class="num">31</td>
+            <td class="num">&mdash;</td>
+            <td class="num">$122.84</td>
+            <td class="num">&mdash;</td>
+            <td><span class="badge badge-green">Good</span></td>
+          </tr>
+          <tr>
+            <td>PMAX &ndash; PURCHASE &ndash; Non Shopping</td>
+            <td><span class="badge badge-grey">PMax</span></td>
+            <td class="mono">Max Convs</td>
+            <td class="num">$3,411</td>
+            <td class="num">28.5</td>
+            <td class="num">$5,396</td>
+            <td class="num">$119.69</td>
+            <td class="num">1.58x</td>
+            <td><span class="badge badge-green">Good</span></td>
+          </tr>
+          <tr>
+            <td>YouTube &ndash; Trueview &ndash; Robotic Mowers</td>
+            <td><span class="badge badge-grey">Video</span></td>
+            <td class="mono">tCPM</td>
+            <td class="num">$2,534</td>
+            <td class="num">1</td>
+            <td class="num">$329</td>
+            <td class="num">$2,534</td>
+            <td class="num">0.13x</td>
+            <td><span class="badge badge-red">Poor</span></td>
+          </tr>
+          <tr>
+            <td>YouTube &ndash; Bumper &ndash; Custom Audience &amp; In-Market</td>
+            <td><span class="badge badge-grey">Video</span></td>
+            <td class="mono">tCPM</td>
+            <td class="num">$2,127</td>
+            <td class="num">0</td>
+            <td class="num">&mdash;</td>
+            <td class="num">&mdash;</td>
+            <td class="num">&mdash;</td>
+            <td><span class="badge badge-red">Poor</span></td>
+          </tr>
+          <tr>
+            <td>PMAX &ndash; PURCHASE &ndash; Performance</td>
+            <td><span class="badge badge-grey">PMax</span></td>
+            <td class="mono">Max Convs</td>
+            <td class="num">$2,125</td>
+            <td class="num">6</td>
+            <td class="num">$1,387</td>
+            <td class="num">$354.30</td>
+            <td class="num">0.65x</td>
+            <td><span class="badge badge-red">Poor</span></td>
+          </tr>
+          <tr>
+            <td>Search &ndash; LEAD &ndash; Buy Intent</td>
+            <td><span class="badge badge-blue">Search</span></td>
+            <td class="mono">Max Convs</td>
+            <td class="num">$1,871</td>
+            <td class="num">8</td>
+            <td class="num">&mdash;</td>
+            <td class="num">$233.81</td>
+            <td class="num">&mdash;</td>
+            <td><span class="badge badge-amber">Weak</span></td>
+          </tr>
+          <tr>
+            <td>YouTube &ndash; Trueview &ndash; Garden Care</td>
+            <td><span class="badge badge-grey">Video</span></td>
+            <td class="mono">tCPM</td>
+            <td class="num">$1,621</td>
+            <td class="num">0</td>
+            <td class="num">&mdash;</td>
+            <td class="num">&mdash;</td>
+            <td class="num">&mdash;</td>
+            <td><span class="badge badge-red">Poor</span></td>
+          </tr>
+          <tr>
+            <td>YouTube &ndash; Bumper &amp; Trueview Remarketing</td>
+            <td><span class="badge badge-grey">Video</span></td>
+            <td class="mono">tCPM</td>
+            <td class="num">$420</td>
+            <td class="num">0</td>
+            <td class="num">&mdash;</td>
+            <td class="num">&mdash;</td>
+            <td class="num">&mdash;</td>
+            <td><span class="badge badge-amber">Weak</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ TOP AD GROUPS -->
+  <div class="section">
+    <div class="section-title">Top Ad Groups by Spend</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Ad Group</th>
+            <th>Campaign</th>
+            <th class="num">Impr.</th>
+            <th class="num">Clicks</th>
+            <th class="num">CTR</th>
+            <th class="num">Avg CPC</th>
+            <th class="num">Spend</th>
+            <th class="num">Convs</th>
+            <th class="num">CVR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Robot Lawn Mower</td>
+            <td>Generic</td>
+            <td class="num">9,575</td>
+            <td class="num">1,122</td>
+            <td class="num">11.7%</td>
+            <td class="num">$2.32</td>
+            <td class="num">$2,603</td>
+            <td class="num">17.5</td>
+            <td class="num">1.6%</td>
+          </tr>
+          <tr>
+            <td>True View &ndash; Competitor Robotic Mowers</td>
+            <td>YouTube Trueview Robotic</td>
+            <td class="num">225,260</td>
+            <td class="num">281</td>
+            <td class="num">0.12%</td>
+            <td class="num">$9.01</td>
+            <td class="num">$2,532</td>
+            <td class="num">1</td>
+            <td class="num">0.4%</td>
+          </tr>
+          <tr>
+            <td>Husqvarna Robot Mower</td>
+            <td>Brand</td>
+            <td class="num">3,038</td>
+            <td class="num">986</td>
+            <td class="num">32.5%</td>
+            <td class="num">$1.71</td>
+            <td class="num">$1,682</td>
+            <td class="num">22</td>
+            <td class="num"><strong>2.2%</strong></td>
+          </tr>
+          <tr>
+            <td>Automower</td>
+            <td>Brand</td>
+            <td class="num">2,762</td>
+            <td class="num">489</td>
+            <td class="num">17.7%</td>
+            <td class="num">$3.29</td>
+            <td class="num">$1,606</td>
+            <td class="num">9</td>
+            <td class="num">1.8%</td>
+          </tr>
+          <tr>
+            <td>Bumper &ndash; Affinity &ndash; Garden Care</td>
+            <td>YouTube Bumper</td>
+            <td class="num">506,153</td>
+            <td class="num">103</td>
+            <td class="num">0.02%</td>
+            <td class="num">$15.22</td>
+            <td class="num">$1,568</td>
+            <td class="num">0</td>
+            <td class="num">0%</td>
+          </tr>
+          <tr>
+            <td>True View &ndash; Affinity &ndash; Garden Care</td>
+            <td>YouTube Trueview Garden Care</td>
+            <td class="num">124,673</td>
+            <td class="num">164</td>
+            <td class="num">0.13%</td>
+            <td class="num">$7.80</td>
+            <td class="num">$1,279</td>
+            <td class="num">0</td>
+            <td class="num">0%</td>
+          </tr>
+          <tr>
+            <td>Automower Buy Intent</td>
+            <td>Brand</td>
+            <td class="num">1,525</td>
+            <td class="num">323</td>
+            <td class="num">21.2%</td>
+            <td class="num">$3.50</td>
+            <td class="num">$1,130</td>
+            <td class="num">2</td>
+            <td class="num">0.6%</td>
+          </tr>
+          <tr>
+            <td>Buy</td>
+            <td>Buy Intent</td>
+            <td class="num">1,847</td>
+            <td class="num">205</td>
+            <td class="num">11.1%</td>
+            <td class="num">$4.00</td>
+            <td class="num">$820</td>
+            <td class="num">4.5</td>
+            <td class="num">2.2%</td>
+          </tr>
+          <tr>
+            <td>Best Automower</td>
+            <td>Buy Intent</td>
+            <td class="num">1,803</td>
+            <td class="num">224</td>
+            <td class="num">12.4%</td>
+            <td class="num">$3.65</td>
+            <td class="num">$817</td>
+            <td class="num">3.5</td>
+            <td class="num">1.6%</td>
+          </tr>
+          <tr style="background:#f0faf4;">
+            <td><strong>Smart Mower</strong></td>
+            <td>Generic</td>
+            <td class="num">1,256</td>
+            <td class="num">152</td>
+            <td class="num">12.1%</td>
+            <td class="num">$3.70</td>
+            <td class="num">$562</td>
+            <td class="num"><strong>8.5</strong></td>
+            <td class="num"><strong>5.6%</strong></td>
+          </tr>
+          <tr>
+            <td>Price</td>
+            <td>Buy Intent</td>
+            <td class="num">853</td>
+            <td class="num">87</td>
+            <td class="num">10.2%</td>
+            <td class="num">$2.63</td>
+            <td class="num">$229</td>
+            <td class="num">0</td>
+            <td class="num">0%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ KEY TAKEAWAYS -->
+  <div class="section">
+    <div class="section-title">Key Takeaways</div>
+    <div class="takeaway-list">
+
+      <div class="takeaway-card positive">
+        <strong>Search and PMax are performing.</strong> The three Search campaigns and PMax &ndash; Non Shopping combined for 110.5 conversions at an average $133 CPA. PMAX &ndash; Non Shopping is the strongest value campaign in the account at $119.69/conv and 1.58x ROAS. Brand search volume remains healthy with a 24.6% account-level CTR.
+      </div>
+
+      <div class="takeaway-card positive">
+        <strong>Smart Mower AG is the standout performer.</strong> 8.5 conversions from 152 clicks at a 5.6% CVR &mdash; best CVR in the account. Currently spending just $562, which is under-weighted relative to its performance.
+      </div>
+
+      <div class="takeaway-card negative">
+        <strong>YouTube spent $6,702 and generated 1 conversion.</strong> That is 27% of the total budget for a $6,702 cost/conv. Three of the four YouTube campaigns returned zero conversions. The Bumper &ndash; Affinity &ndash; Garden Care AG alone ran $1,568 for 0 conversions across 506k impressions.
+      </div>
+
+      <div class="takeaway-card negative">
+        <strong>PMAX &ndash; Performance is losing money.</strong> $2,125 in spend returned $1,387 in conversion value &mdash; 0.65x ROAS. This campaign is actively below break-even and needs to be paused or restructured before March.
+      </div>
+
+      <div class="takeaway-card neutral">
+        <strong>Buy Intent is underdelivering.</strong> The campaign spent $1,871 for 8 conversions at $233.81/conv &mdash; significantly above the account average. The Price AG ($229 spend, 0 convs) and several high-intent search terms are not converting, which points to a landing page issue rather than a bidding or targeting problem.
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════ FOOTER -->
+<div class="footer">
+  Husqvarna AU &mdash; Automower &nbsp;&bull;&nbsp; February 2026 Performance Report &nbsp;&bull;&nbsp; Webprofits
+</div>
+
+</body>
+</html>
