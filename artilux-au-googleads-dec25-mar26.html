@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Artilux – Google Ads Performance | Dec 2025 – Feb 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #FFFFFF; --bg-alt: #F7F6F5; --bg-card: #FFFFFF;
+      --border: #E0DEDC; --border-med: #C8C5C2;
+      --text-primary: #070909; --text-secondary: #4A4A4A; --text-muted: #888888;
+      --wp: #EA4648; --wp-soft: #D63A3C; --wp-bg: rgba(234,70,72,0.06);
+      --green: #047857; --green-bg: rgba(4,120,87,0.07);
+      --amber: #B45309; --amber-bg: rgba(180,83,9,0.07);
+      --blue: #1D4ED8; --blue-bg: rgba(29,78,216,0.07);
+      --r-sm: 6px; --r-md: 10px; --r-lg: 14px; --r-xl: 20px; --r-full: 999px;
+    }
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-base); color: var(--text-primary);
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-size: 16px; line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+    .label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--wp); display: block; margin-bottom: 12px; }
+    .section-title { font-size: clamp(26px, 4vw, 40px); font-weight: 800; line-height: 1.12; color: var(--text-primary); margin-bottom: 14px; }
+    .section-sub { font-size: 16px; color: var(--text-secondary); max-width: 720px; margin-bottom: 40px; line-height: 1.7; }
+    p { margin-bottom: 16px; color: var(--text-secondary); line-height: 1.7; }
+    strong { color: var(--text-primary); font-weight: 700; }
+    section { padding: 72px 0 80px; }
+    section + section { border-top: 1px solid var(--border); }
+    section:nth-child(even) { background: var(--bg-alt); }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      height: 58px; display: flex; align-items: center;
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .nav-links { display: flex; gap: 2px; overflow-x: auto; flex: 1; justify-content: center; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { font-size: 12.5px; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 5px 12px; border-radius: var(--r-sm); white-space: nowrap; transition: color .15s, background .15s; }
+    .nav-links a:hover { color: var(--text-primary); background: var(--bg-alt); }
+    .nav-badge { flex-shrink: 0; font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.06em; display: flex; align-items: center; gap: 12px; }
+    .nav-logo { height: 24px; width: auto; display: block; }
+    .nav-logo path { fill: var(--text-primary); }
+
+    /* Hero */
+    #hero { padding: 80px 0 72px; background: var(--bg-base); }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border); border-radius: var(--r-full); font-size: 12px; color: var(--text-muted); padding: 5px 16px; margin-bottom: 28px; background: var(--bg-alt); font-weight: 600; }
+    .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--wp); display: block; }
+    .hero-heading { font-size: clamp(36px, 6vw, 56px); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 20px; max-width: 800px; }
+    .hero-heading em { font-style: normal; color: var(--wp); }
+    .hero-sub { font-size: clamp(16px, 1.8vw, 18px); color: var(--text-secondary); font-weight: 400; max-width: 640px; margin-bottom: 40px; line-height: 1.7; }
+
+    /* KPI tiles */
+    .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 28px 0; }
+    .kpi-tile { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px 22px; text-align: center; }
+    section:nth-child(even) .kpi-tile { background: var(--bg-base); }
+    .kpi-tile-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 6px; }
+    .kpi-tile-value { font-size: 36px; font-weight: 900; color: var(--text-primary); line-height: 1.1; margin-bottom: 14px; }
+    .kpi-tile-comps { display: flex; justify-content: center; gap: 24px; }
+    .kpi-comp { text-align: center; }
+    .kpi-comp-label { font-size: 11px; color: var(--text-muted); font-weight: 500; margin-bottom: 2px; }
+    .kpi-comp-value { font-size: 15px; font-weight: 800; }
+    .kpi-comp-value.up { color: var(--green); }
+    .kpi-comp-value.down { color: var(--wp); }
+
+    /* Monthly/weekly card */
+    .weekly-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; margin: 20px 0; }
+    section:nth-child(even) .weekly-card { background: var(--bg-base); }
+    .weekly-card-header { padding: 18px 22px 14px; border-bottom: 1px solid var(--border); }
+    .weekly-card-title { font-size: 16px; font-weight: 800; }
+    .weekly-card-sub { font-size: 12px; color: var(--text-muted); }
+    .weekly-card-body { padding: 10px 22px 6px; }
+    .weekly-table { width: 100%; border-collapse: collapse; }
+    .weekly-table th { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); padding: 8px 10px; text-align: left; border-bottom: 1px solid rgba(224,222,220,0.5); }
+    .weekly-table td { font-size: 13px; color: var(--text-secondary); padding: 8px 10px; border-bottom: 1px solid rgba(224,222,220,0.5); }
+    .weekly-table tr:last-child td { border-bottom: none; }
+    .weekly-table .wk-rev { font-weight: 800; color: var(--text-primary); }
+    .weekly-table .wk-roas { font-weight: 700; }
+    .weekly-card-note { padding: 12px 22px; background: var(--bg-alt); font-size: 13px; color: var(--text-muted); line-height: 1.5; border-top: 1px solid var(--border); }
+    section:nth-child(even) .weekly-card-note { background: var(--bg-card); }
+
+    /* Chart */
+    .chart-wrap { margin: 20px 0; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px 28px; }
+    section:nth-child(even) .chart-wrap { background: var(--bg-base); }
+    .chart-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .chart-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+    .chart-legend { display: flex; gap: 16px; }
+    .chart-legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-muted); }
+    .chart-legend-swatch { width: 10px; height: 10px; border-radius: 2px; }
+    .chart-legend-swatch.above { background: var(--green); }
+    .chart-legend-swatch.below { background: var(--amber); }
+    .chart-area { display: flex; align-items: stretch; gap: 6px; height: 220px; position: relative; }
+    .chart-col { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; }
+    .chart-bar-area { flex: 1; width: 100%; position: relative; }
+    .chart-bar { width: 100%; border-radius: 6px 6px 0 0; position: absolute; bottom: 0; left: 0; min-height: 8px; }
+    .chart-roas { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 700; color: var(--text-primary); white-space: nowrap; padding-bottom: 4px; }
+    .chart-bar.above { background: var(--green); }
+    .chart-bar.below { background: var(--amber); }
+    .chart-bar-rev { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 700; color: #fff; white-space: nowrap; }
+    .chart-meta { margin-top: 8px; text-align: center; }
+    .chart-label { font-size: 12px; font-weight: 600; color: var(--text-muted); }
+    .chart-year { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+
+    /* Campaign table */
+    .campaign-table-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; margin: 20px 0; overflow-x: auto; }
+    section:nth-child(even) .campaign-table-wrap { background: var(--bg-base); }
+    .campaign-table { width: 100%; border-collapse: collapse; min-width: 700px; }
+    .campaign-table thead th { background: var(--text-primary); color: #fff; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 12px 14px; text-align: left; white-space: nowrap; }
+    .campaign-table tbody td { padding: 12px 14px; font-size: 13px; color: var(--text-secondary); border-bottom: 1px solid var(--border); }
+    .campaign-table tbody tr:last-child td { border-bottom: none; }
+    .campaign-table .total-row td { background: var(--bg-alt); font-weight: 800; color: var(--text-primary); font-size: 14px; }
+    .status-pill { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 8px; border-radius: var(--r-full); }
+    .status-pill.active { background: var(--green-bg); color: var(--green); }
+    .status-pill.paused { background: var(--bg-alt); color: var(--text-muted); }
+
+    /* Changes */
+    .change-list { margin: 28px 0; }
+    .change-item { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .change-item:last-child { border-bottom: none; }
+    .change-icon { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 16px; margin-top: 2px; }
+    .change-icon.fix { background: var(--green-bg); color: var(--green); }
+    .change-icon.cut { background: var(--wp-bg); color: var(--wp); }
+    .change-icon.bid { background: var(--blue-bg); color: var(--blue); }
+    .change-icon.test { background: var(--amber-bg); color: var(--amber); }
+    .change-body { flex: 1; min-width: 0; }
+    .change-title { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; line-height: 1.35; }
+    .change-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.55; margin: 0; }
+
+    /* Next cards */
+    .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+    .next-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--wp); border-radius: var(--r-lg); padding: 22px 24px; }
+    section:nth-child(even) .next-card { background: var(--bg-base); }
+    .next-card-title { font-size: 15px; font-weight: 800; color: var(--text-primary); margin-bottom: 6px; }
+    .next-card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.55; margin: 0; }
+
+    /* Footer */
+    footer { background: var(--text-primary); padding: 40px 0; text-align: center; }
+    footer p { font-size: 14px; color: rgba(255,255,255,0.4); font-weight: 500; margin: 0; }
+    footer p em { font-style: italic; }
+
+    /* Download button */
+    .btn-download { display: inline-flex; align-items: center; gap: 6px; background: var(--wp); color: #fff; border: none; cursor: pointer; font-family: 'Poppins', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; padding: 7px 16px; border-radius: var(--r-full); transition: background .15s, transform .1s; white-space: nowrap; }
+    .btn-download:hover { background: var(--wp-soft); transform: translateY(-1px); }
+    .btn-download:active { transform: translateY(0); }
+    .btn-download svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* Print header */
+    .print-header { display: none; }
+    .print-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 0 0 16px 0; margin-bottom: 28px; border-bottom: 2px solid #EA4648; }
+    .print-header-left { display: flex; flex-direction: column; gap: 2px; }
+    .print-header-title { font-size: 11px; font-weight: 700; color: #070909; letter-spacing: 0.02em; }
+    .print-header-date { font-size: 10px; font-weight: 500; color: #888; }
+    .print-header-logo { height: 22px; width: auto; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .next-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 56px 0 60px; } .wrap { padding: 0 16px; }
+      .nav-links { display: none; }
+      .nav-badge span { display: none; }
+      .kpi-tile-value { font-size: 28px; }
+      .chart-area { height: 180px; }
+      .chart-bar-rev { font-size: 9px; }
+      .chart-roas { font-size: 9px; }
+      .chart-label { font-size: 10px; }
+    }
+    @media (max-width: 480px) {
+      section { padding: 40px 0; } .wrap { padding: 0 14px; }
+      .kpi-tile-comps { flex-direction: column; gap: 10px; }
+    }
+
+    /* Print / PDF */
+    @media print {
+      @page { size: A4; margin: 16mm 16mm 18mm 16mm; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+      body { background: #fff !important; font-size: 13px; line-height: 1.6; }
+      nav { display: none !important; }
+      .btn-download { display: none !important; }
+      .print-header { display: block !important; }
+      .hero-badge { display: none !important; }
+      #hero { padding: 0 0 20px !important; }
+      .hero-heading { font-size: 30px !important; letter-spacing: -0.02em; margin-bottom: 10px; }
+      .hero-sub { font-size: 13px; margin-bottom: 16px; max-width: 100%; }
+      footer { break-before: avoid; padding: 24px 0; background: #fff !important; }
+      footer p { color: rgba(0,0,0,0.3) !important; font-size: 11px; }
+      section { padding: 28px 0 32px !important; background: #fff !important; }
+      section:nth-child(even) { background: #fff !important; }
+      section + section { border-top: 1px solid #E0DEDC; }
+      .wrap { max-width: 100%; padding: 0 !important; }
+      .section-title { font-size: 24px !important; font-weight: 800; margin-bottom: 8px; }
+      .section-sub { font-size: 13px; margin-bottom: 20px; max-width: 100%; color: #4A4A4A; }
+      .label { font-size: 10px; font-weight: 700; margin-bottom: 8px; color: #EA4648; }
+      p { font-size: 12.5px; line-height: 1.55; }
+      .kpi-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 12px; margin: 16px 0; }
+      .kpi-tile { break-inside: avoid; border: 1px solid #E0DEDC; border-radius: 10px; padding: 16px 14px; }
+      .kpi-tile-value { font-size: 28px; }
+      .kpi-comp-value { font-size: 13px; }
+      .kpi-comp-label { font-size: 9px; }
+      .weekly-card { break-inside: avoid; border: 1px solid #E0DEDC; border-radius: 10px; margin: 12px 0; }
+      .weekly-card-header { padding: 12px 16px 10px; }
+      .weekly-card-title { font-size: 13px; }
+      .weekly-table th { font-size: 9px; padding: 6px 8px; }
+      .weekly-table td { font-size: 11px; padding: 6px 8px; }
+      .weekly-card-note { font-size: 10.5px; padding: 8px 16px; background: #F7F6F5 !important; }
+      .chart-wrap { break-inside: avoid; border: 1px solid #E0DEDC; border-radius: 10px; padding: 16px 20px; margin: 12px 0; }
+      .chart-area { height: 160px; }
+      .chart-bar-rev { font-size: 9px; }
+      .chart-roas { font-size: 9px; }
+      .chart-label { font-size: 10px; }
+      .chart-year { font-size: 9px; }
+      .campaign-table-wrap { break-inside: avoid; border: 1px solid #E0DEDC; border-radius: 10px; margin: 12px 0; }
+      .campaign-table thead th { font-size: 9px; padding: 10px 10px; }
+      .campaign-table tbody td { font-size: 11px; padding: 10px 10px; }
+      .change-list { margin: 16px 0; }
+      .change-item { padding: 12px 0; break-inside: avoid; gap: 14px; }
+      .change-icon { width: 28px; height: 28px; font-size: 13px; }
+      .change-title { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+      .change-desc { font-size: 11px; line-height: 1.5; }
+      .next-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; margin: 16px 0; }
+      .next-card { break-inside: avoid; padding: 16px 18px; border: 1px solid #E0DEDC; border-left: 3px solid #EA4648; border-radius: 10px; }
+      section:nth-child(even) .next-card { background: #fff; }
+      .next-card-title { font-size: 13px; font-weight: 800; margin-bottom: 4px; }
+      .next-card-desc { font-size: 11px; line-height: 1.5; }
+      #campaigns { break-before: page; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Print header (hidden on screen) -->
+  <div class="print-header">
+    <div class="wrap">
+      <div class="print-header-inner">
+        <div class="print-header-left">
+          <div class="print-header-title">Artilux – Google Ads Performance | Dec 2025 – Feb 2026</div>
+          <div class="print-header-date">Prepared by Webprofits · March 2026</div>
+        </div>
+        <svg class="print-header-logo" viewBox="0 0 40 28" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0L6 28L14 10L20 22L26 10L34 28L40 0L34 0L28 18L20 4L12 18L6 0Z" fill="#EA4648"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav>
+    <div class="wrap nav-inner">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <svg class="nav-logo" viewBox="0 0 40 28" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0L6 28L14 10L20 22L26 10L34 28L40 0L34 0L28 18L20 4L12 18L6 0Z"/>
+        </svg>
+      </div>
+      <div class="nav-links">
+        <a href="#metrics">Metrics</a>
+        <a href="#campaigns">Campaigns</a>
+        <a href="#changes">Changes</a>
+        <a href="#projection">What's next</a>
+      </div>
+      <div class="nav-badge">
+        <span>Dec 2025 – Feb 2026</span>
+        <button class="btn-download" onclick="window.print()">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12H2.5A1.5 1.5 0 0 1 1 10.5v-4A1.5 1.5 0 0 1 2.5 5h11A1.5 1.5 0 0 1 15 6.5v4a1.5 1.5 0 0 1-1.5 1.5H12"/><rect x="4" y="10" width="8" height="5" rx=".75"/><path d="M4 5V1.75A.75.75 0 0 1 4.75 1h6.5a.75.75 0 0 1 .75.75V5"/></svg>
+          Download PDF
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="wrap">
+      <div class="hero-badge"><span></span> Dec 2025 – Feb 2026 Performance</div>
+      <h1 class="hero-heading">Artilux – <em>Google Ads</em></h1>
+      <p class="hero-sub">394 leads generated at $58 cost per lead across the last 90 days.</p>
+    </div>
+  </section>
+
+  <!-- Key Metrics -->
+  <section id="metrics">
+    <div class="wrap">
+      <span class="label">KEY METRICS</span>
+      <h2 class="section-title">Key metrics</h2>
+      <p class="section-sub">Dec 5, 2025 – Mar 4, 2026. Compared against the previous 90 days (Sep 6 – Dec 4) and the same period last year.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-tile">
+          <div class="kpi-tile-label">Leads</div>
+          <div class="kpi-tile-value">394</div>
+          <div class="kpi-tile-comps">
+            <div class="kpi-comp">
+              <div class="kpi-comp-label">vs prev 90 days</div>
+              <div class="kpi-comp-value down">-19.3%</div>
+            </div>
+            <div class="kpi-comp">
+              <div class="kpi-comp-label">vs same period LY</div>
+              <div class="kpi-comp-value down">-14.7%</div>
+            </div>
+          </div>
+        </div>
+        <div class="kpi-tile">
+          <div class="kpi-tile-label">Spend</div>
+          <div class="kpi-tile-value">$22,886</div>
+          <div class="kpi-tile-comps">
+            <div class="kpi-comp">
+              <div class="kpi-comp-label">vs prev 90 days</div>
+              <div class="kpi-comp-value down">+3.6%</div>
+            </div>
+            <div class="kpi-comp">
+              <div class="kpi-comp-label">vs same period LY</div>
+              <div class="kpi-comp-value down">+30.5%</div>
+            </div>
+          </div>
+        </div>
+        <div class="kpi-tile">
+          <div class="kpi-tile-label">Cost per Lead</div>
+          <div class="kpi-tile-value">$58</div>
+          <div class="kpi-tile-comps">
+            <div class="kpi-comp">
+              <div class="kpi-comp-label">vs prev 90 days</div>
+              <div class="kpi-comp-value down">+28.3%</div>
+            </div>
+            <div class="kpi-comp">
+              <div class="kpi-comp-label">vs same period LY</div>
+              <div class="kpi-comp-value down">+53.2%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monthly breakdown -->
+      <div class="weekly-card">
+        <div class="weekly-card-header">
+          <div class="weekly-card-title">Monthly breakdown</div>
+          <div class="weekly-card-sub">Dec 2025 – Mar 2026 performance by month</div>
+        </div>
+        <div class="weekly-card-body">
+          <table class="weekly-table">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Leads</th>
+                <th>Spend</th>
+                <th>Cost per Lead</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>December 2025</td>
+                <td class="wk-rev">113</td>
+                <td>$7,136</td>
+                <td class="wk-roas">$63</td>
+              </tr>
+              <tr>
+                <td>January 2026</td>
+                <td class="wk-rev">158</td>
+                <td>$7,757</td>
+                <td class="wk-roas">$49</td>
+              </tr>
+              <tr>
+                <td>February 2026</td>
+                <td class="wk-rev">132</td>
+                <td>$7,863</td>
+                <td class="wk-roas">$60</td>
+              </tr>
+              <tr>
+                <td>March 2026 (1–4)</td>
+                <td class="wk-rev">13</td>
+                <td>$1,102</td>
+                <td class="wk-roas">$85</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="weekly-card-note">Monthly figures reflect full calendar months for Dec–Feb; March covers the 1st–4th only. January was the strongest month of the period with 158 leads at $49 per lead — the account's best result since November 2025.</div>
+      </div>
+
+      <!-- 13-month chart -->
+      <div class="chart-wrap">
+        <div class="chart-header">
+          <div class="chart-title">MONTHLY LEADS</div>
+          <div class="chart-legend">
+            <div class="chart-legend-item"><div class="chart-legend-swatch above"></div> Below $55 CPL</div>
+            <div class="chart-legend-item"><div class="chart-legend-swatch below"></div> Above $55 CPL</div>
+          </div>
+        </div>
+        <div class="chart-area">
+          <!-- Feb 2025: 126 leads, $41 CPL, GREEN, 64.9% -->
+          <div class="chart-col">
+            <div class="chart-bar-area">
+              <div class="chart-bar above" style="height:64.9%;">
+                <div class="chart-roas">$41</div>
+                <div class="chart-bar-rev">126</div>
+              </div>
+            </div>
+            <div class="chart-meta"><div class="chart-label">Feb</div><div class="chart-year">2025</div></div>
+          </div>
+          <!-- Mar 2025: 88 leads, $55 CPL, AMBER, 45.4% -->
+          <div class="chart-col">
+            <div class="chart-bar-area">
+              <div class="chart-bar below" style="height:45.4%;">
+                <div class="chart-roas">$55</div>
+                <div class="chart-bar-rev">88</div>
+              </div>
+            </div>
+            <div class="chart-meta"><div class="chart-label">Mar</div><div class="chart-year">2025</div></div>
+          </div>
+          <!-- Apr 2025: 68 leads, $49 CPL, GREEN, 35.1% -->
+          <div class="chart-col">
+            <div class="chart-bar-area">
+              <div class="chart-bar above" style="height:35.1%;">
+                <div class="chart-roas">$49</div>
+                <div class="chart-bar-rev">68</div>
+              </div>
+            </div>
+            <div class="chart-meta"><div class="chart-label">Apr</div><div class="chart-year">2025</div></div>
+          </div>
+          <!-- May 2025: 52 leads, $59 CPL, AMBER, 26.8% -->
+          <div class="chart-col">
+            <div class="chart-bar-area">
+              <div class="chart-bar below" style="height:26.8%;">
+                <div class="chart-roas">$59</div>
+                <div class="chart-bar-rev">52</div>
+              </div>
+            </div>
+            <div class="chart-meta"><div class="chart-label">May</div><div class="chart-year">2025</div></div>
+          </div>
+          <!-- Jun 2025: 29 leads, $139 CPL, AMBER, 14.9% -->
+          <div class="chart-col">
+            <div class="chart-bar-area">
+              <div class="chart-bar below" style="height:14.9%;">
+                <div class="chart-roas">$139</div>
+                <div class="chart-bar-rev">29</div>
+              </div>
+            </div>
+            <div class="chart-meta"><div class="chart-label">Jun</div><div class="chart-year">2025</div></div>
+          </div>
+          <!-- Jul 2025: 43 leads, $90 CPL, AMBER, 22.2% -->
+          <div class="chart-col">
+            <div class="chart-bar-area">
+              <div class="chart-bar below" style="height:22.2%;">
+                <div class="chart-roas">$90</div>
+                <div class="chart-bar-rev">43</div>
+              </div>
+            </div>
+            <div class="chart-meta"><div class="chart-label">Jul</div><div class="chart-year">2025</div></div>
+          </div>
+          <!-- Aug 2025: 71 leads, $78 CPL, AMBER, 36.3% -->
+          <div class="chart-col">
+            <div class="chart-bar-area">
+              <div class="chart-bar below" style="height:36.3%;">
+                <div class="chart-roas">$78</div>
+                <div class="chart-bar-rev">71</div>
+              </div>
+            </div>
+            <div class="chart-meta"><div class="chart-label">Aug</div><div class="chart-year">2025</div></div>
+          </div>
+          <!-- Sep 2025: 124 leads, $57 CPL, AMBER, 63.9% -->
+          <div class="chart-col">
+            <div class="chart-bar-area">
+              <div class="chart-bar below" style="height:63.9%;">
+                <div class="chart-roas">$57</div>
+                <div class="chart-bar-rev">124</div>
+              </div>
+            </div>
+            <div class="chart-meta"><div class="chart-label">Sep</div><div class="chart-year">2025</div></div>
+          </div>
+          <!-- Oct 2025: 194 leads, $43 CPL, GREEN, 100% -->
+          <div class="chart-col">
+            <div class="chart-bar-area">
+              <div class="chart-bar above" style="height:100%;">
+                <div class="chart-roas">$43</div>
+                <div class="chart-bar-rev">194</div>
+              </div>
+            </div>
+            <div class="chart-meta"><div class="chart-label">Oct</div><div class="chart-year">2025</div></div>
+          </div>
+          <!-- Nov 2025: 174 leads, $45 CPL, GREEN, 89.7% -->
+          <div class="chart-col">
+            <div class="chart-bar-area">
+              <div class="chart-bar above" style="height:89.7%;">
+                <div class="chart-roas">$45</div>
+                <div class="chart-bar-rev">174</div>
+              </div>
+            </div>
+            <div class="chart-meta"><div class="chart-label">Nov</div><div class="chart-year">2025</div></div>
+          </div>
+          <!-- Dec 2025: 113 leads, $63 CPL, AMBER, 58.2% -->
+          <div class="chart-col">
+            <div class="chart-bar-area">
+              <div class="chart-bar below" style="height:58.2%;">
+                <div class="chart-roas">$63</div>
+                <div class="chart-bar-rev">113</div>
+              </div>
+            </div>
+            <div class="chart-meta"><div class="chart-label">Dec</div><div class="chart-year">2025</div></div>
+          </div>
+          <!-- Jan 2026: 158 leads, $49 CPL, GREEN, 81.4% -->
+          <div class="chart-col">
+            <div class="chart-bar-area">
+              <div class="chart-bar above" style="height:81.4%;">
+                <div class="chart-roas">$49</div>
+                <div class="chart-bar-rev">158</div>
+              </div>
+            </div>
+            <div class="chart-meta"><div class="chart-label">Jan</div><div class="chart-year">2026</div></div>
+          </div>
+          <!-- Feb 2026: 132 leads, $60 CPL, AMBER, 68.0% -->
+          <div class="chart-col">
+            <div class="chart-bar-area">
+              <div class="chart-bar below" style="height:68.0%;">
+                <div class="chart-roas">$60</div>
+                <div class="chart-bar-rev">132</div>
+              </div>
+            </div>
+            <div class="chart-meta"><div class="chart-label">Feb</div><div class="chart-year">2026</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Campaign Performance -->
+  <section id="campaigns">
+    <div class="wrap">
+      <span class="label">CAMPAIGN PERFORMANCE</span>
+      <h2 class="section-title">Campaign performance</h2>
+      <p class="section-sub">Dec 5, 2025 – Mar 4, 2026. All campaigns with spend during the period.</p>
+      <div class="campaign-table-wrap">
+        <table class="campaign-table">
+          <thead>
+            <tr>
+              <th>Campaign</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Spend</th>
+              <th>Leads</th>
+              <th>Cost per Lead</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Retractable Screens</strong></td>
+              <td>Search</td>
+              <td><span class="status-pill active">Active</span></td>
+              <td>$11,449</td>
+              <td><strong>165</strong></td>
+              <td><strong>$69</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Door &amp; Window Screens</strong></td>
+              <td>Search</td>
+              <td><span class="status-pill active">Active</span></td>
+              <td>$9,759</td>
+              <td><strong>143</strong></td>
+              <td><strong>$68</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Branded Search</strong></td>
+              <td>Search</td>
+              <td><span class="status-pill active">Active</span></td>
+              <td>$1,678</td>
+              <td><strong>86</strong></td>
+              <td><strong>$20</strong></td>
+            </tr>
+            <tr class="total-row">
+              <td>Total</td><td></td><td></td>
+              <td>$22,886</td><td>394</td><td>$58</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Changes Made -->
+  <section id="changes">
+    <div class="wrap">
+      <span class="label">CHANGES MADE</span>
+      <h2 class="section-title">Changes made</h2>
+      <p class="section-sub">Actions taken during the period to improve account performance and reduce wasted spend.</p>
+      <div class="change-list">
+        <div class="change-item">
+          <div class="change-icon fix">&#10003;</div>
+          <div class="change-body">
+            <div class="change-title">Automated search term filtering</div>
+            <p class="change-desc">An automated system runs daily across both non-branded campaigns, identifying and blocking searches that fall outside the target intent. This progressively reduces wasted clicks over time without requiring manual review of every search.</p>
+          </div>
+        </div>
+        <div class="change-item">
+          <div class="change-icon cut">&#10005;</div>
+          <div class="change-body">
+            <div class="change-title">Manual exclusions added to Door &amp; Window Screens</div>
+            <p class="change-desc">On top of the automated system, a manual review layer was applied to catch searches that appeared relevant but were leading to low-quality traffic. Additional exclusions were added specifically to the Door &amp; Window Screens campaign.</p>
+          </div>
+        </div>
+        <div class="change-item">
+          <div class="change-icon bid">&#x27F3;</div>
+          <div class="change-body">
+            <div class="change-title">Daily budget pacing</div>
+            <p class="change-desc">Automated daily budget adjustments were applied across both campaigns throughout the period to keep spend on track against monthly targets, preventing over-delivery in high-traffic periods and under-delivery in quieter ones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Next -->
+  <section id="projection">
+    <div class="wrap">
+      <span class="label">WHAT'S NEXT</span>
+      <h2 class="section-title">What's next</h2>
+      <p class="section-sub">Upcoming priorities to bring cost per lead down and grow lead volume heading into the stronger season.</p>
+      <div class="next-grid">
+        <div class="next-card">
+          <div class="next-card-title">CPL efficiency recovery</div>
+          <p class="next-card-desc">Cost per lead has risen from $45 in the prior period to $58. The account's best months have delivered leads at $43–$45. Reviewing the efficiency targets on both non-branded campaigns and refining how they respond to search demand should bring CPL back toward those levels.</p>
+        </div>
+        <div class="next-card">
+          <div class="next-card-title">Spring season preparation</div>
+          <p class="next-card-desc">October is consistently the account's strongest month — 194 leads at $43 per lead last year. Getting campaign structures, budgets, and efficiency settings in place before demand picks up ensures the account is ready to capture that volume rather than adjusting after the fact.</p>
+        </div>
+        <div class="next-card">
+          <div class="next-card-title">Geographic targeting test</div>
+          <p class="next-card-desc">Location-focused campaigns are currently paused. Reintroducing a targeted geographic approach for the highest-converting metro markets could drive incremental lead volume, particularly in areas where search demand is concentrated.</p>
+        </div>
+        <div class="next-card">
+          <div class="next-card-title">Branded budget review</div>
+          <p class="next-card-desc">Branded leads are converting at $20 per lead — roughly a third the cost of non-branded. Reviewing whether the branded campaign has sufficient budget to capture full demand in its category is a straightforward efficiency opportunity that requires no creative changes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <p><em>"We believe there's always a smarter, faster + better way of doing things"</em></p>
+    </div>
+  </footer>
+
+</body>
+</html>
